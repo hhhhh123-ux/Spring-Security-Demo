@@ -78,8 +78,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http.authorizeRequests().
-                //antMatchers("/getUser").hasAuthority("query_user").
-                //antMatchers("/**").fullyAuthenticated().
+                antMatchers("/getUser").hasAuthority("query_user").
+                antMatchers("/login").fullyAuthenticated().
                 withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O o) {
